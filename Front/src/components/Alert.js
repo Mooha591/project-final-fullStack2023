@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "./Alert.css";
 
 const Alert = ({ type, msg, removeAlert, todos }) => {
   useEffect(() => {

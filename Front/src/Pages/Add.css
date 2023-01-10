@@ -34,17 +34,53 @@ Variables
 /*  button dark-mode */
 
 .dark-mode__toggle {
-    display: flex;
-    top: 80px;
-    right: 30px;
-    padding: 0.5rem;
-    cursor: pointer;
-    /* z-index: 10; */
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  top: 80px;
+  right: 30px;
+  padding: 0.5rem;
+  cursor: pointer;
+  /* z-index: 10; */
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
 
+.dark-mode{
+  background-color: #333;
+  color: rgb(112, 107, 107);
+
+}
+
+
+/* en mode dark-mode mon background de tache devient rouge */
+.dark-mode .HeaderTask{
+  background-color:var(--clr-red-light);
+  color: white;
+}
+
+
+/* .dark-mode__toggle{
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+} */
+
+.dark-mode__toggle {
+  display: flex;
+  top: 80px;
+  right: 30px;
+  padding: 0.5rem;
+  cursor: pointer;
+  /* z-index: 10; */
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+
+
+}
 
 
   /* form container search */
