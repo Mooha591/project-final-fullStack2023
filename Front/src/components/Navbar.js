@@ -71,7 +71,7 @@ const Navbar = ({ auth }) => {
           {/* si l'utilisateur est authentifié on affiche le ajouter */}
           {auth ? (
             <Link to="/add" className="ajouter">
-              <li>AddT</li>
+              <li>Add</li>
             </Link>
           ) : (
             "" // si l'utilisateur n'est pas authentifié on affiche rien

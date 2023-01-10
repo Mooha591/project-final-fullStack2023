@@ -49,7 +49,7 @@ Variables
     color: white;
     top: 0;
     z-index: 1;  
-    position: sticky;
+    position: sticky; 
   }
 
     .navbar a{
@@ -142,7 +142,6 @@ li:hover{
      width: 65%;
      align-items: center; 
      z-index: 1;
-     
    }
    
    }
@@ -181,9 +180,21 @@ li:hover{
          text-align: center;
          padding: 0;
          margin: 0;
-         
-   
+         /* no scrolling */
+         overflow-y: scroll;
+         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
      }
+
+     /* ma navbar et mon menu nav-links-mobile reste collé à la navbar à l'ouverture du menu 
+       mobile */
+      .nav-links-mobile, .navbar {
+         position: fixed;
+         width: 100%;
+
+      }
+
+
    
    
    
