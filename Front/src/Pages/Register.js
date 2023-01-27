@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "../components/Alert";
 import "./Register.css";
 
-const Register = (props) => {
+const Register = () => {
   let history = useNavigate(); // pour rediriger vers une autre page
   const [data, setData] = useState({
     // data is an object
@@ -19,11 +19,12 @@ const Register = (props) => {
 
   // alert
   const showAlert = (show = false, type = "", msg = "") => {
+    // j'ai créé une fonction pour afficher les messages d'alerte et je l'ai appelé dans le submitForm pour afficher les messages d'alerte en fonction des conditions de validation du formulaire .
     setAlert({ show, type, msg });
   };
 
   const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value }); // ...data = copie de data, [e.target.name] = nom de l'input, e.target.value = valeur de l'input pour pouvoir
   };
 
   // submit form
@@ -32,6 +33,7 @@ const Register = (props) => {
 
     // envoyer les données au serveur
     const sendData = {
+      // cela permet de créer un objet avec les données du formulaire pour l'envoyer au serveur et de ne pas envoyer les données vides au serveur
       first_name: data.first_name,
       last_name: data.last_name,
       email: data.email,
@@ -49,7 +51,7 @@ const Register = (props) => {
     } else if (
       data.password.match(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-      ) === null
+      ) === null // regex pour vérifier le mot de passe
     ) {
       showAlert(
         true,
@@ -58,7 +60,7 @@ const Register = (props) => {
       );
     } else if (
       data.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/) ===
-      null
+      null // regex pour vérifier l'email
     ) {
       showAlert(true, "danger", "Veuillez entrer un email valide");
     } else {
@@ -66,15 +68,13 @@ const Register = (props) => {
       axios
         .post("http://localhost/back2/register.php", sendData)
         .then((result) => {
-          console.log(result.data);
           if (result.data.error) {
             showAlert(true, "danger", "Email déjà existant");
           } else {
-            // resetInput();
             showAlert(true, "success", "Inscription réussie");
             setTimeout(() => {
-              showAlert(false, "", "");
-              history(`/login`);
+              showAlert(false, "", ""); // enlever l'alerte
+              history(`/login`); // rediriger vers la page login
             }, 2000);
           }
         });
@@ -82,10 +82,10 @@ const Register = (props) => {
   };
   return (
     <div className="container-register">
-      <h3>Register</h3>
+      <h1>Register</h1>
 
       <form className="form" onSubmit={submitForm}>
-        {alert.show && (
+        {alert.show && ( // si alert.show est true alors on affiche l'alerte
           <Alert type={alert.type} msg={alert.msg} removeAlert={showAlert} />
         )}
         <div className="form-control">
@@ -94,8 +94,8 @@ const Register = (props) => {
             type="text"
             id="first_name"
             onChange={handleChange}
-            name="first_name"
-            value={data.first_name}
+            name="first_name" // permet de récupérer la valeur de l'input
+            value={data.first_name} // permet de garder la valeur de l'input
           />
         </div>
         <div className="form-control">
@@ -116,7 +116,6 @@ const Register = (props) => {
             onChange={handleChange}
             name="email" // name must be the same as the state
             value={data.email}
-            // setEmailError={setEmailError}
           />
         </div>
         <div className="form-control">

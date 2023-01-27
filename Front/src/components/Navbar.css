@@ -86,7 +86,7 @@ Variables
 .home,
 .register,
 .login,
-.ajouter,
+.add,
 .Logout
  {
   /* padding: 10 20px; */
@@ -133,7 +133,6 @@ li:hover{
        display: none;
     }
 
-
     /* ne casse pas ma navbar ul li quand on repasse en mode pc  */
    .nav-links-mobile { 
      display: flex;
@@ -168,7 +167,7 @@ li:hover{
      }
    
      .nav-links-mobile {
-         position: absolute; 
+         /* position: absolute;  */
          display: block;
          list-style: none;
          background-color: #333;
@@ -183,20 +182,20 @@ li:hover{
          /* no scrolling */
          overflow-y: scroll;
          overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
+        /* -webkit-overflow-scrolling: touch; */
      }
 
      /* ma navbar et mon menu nav-links-mobile reste collé à la navbar à l'ouverture du menu 
        mobile */
       .nav-links-mobile, .navbar {
-         position: fixed;
+         position: fixed; 
          width: 100%;
 
       }
 
 
-   
-   
+
+  
    
    
      .nav-links-mobile li {

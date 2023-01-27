@@ -6,6 +6,7 @@ import Alert from "../components/Alert";
 
 // const url = "http://localhost/back2/";
 const Login = ({ setAuth }) => {
+  // elle nous sert à vérifier si l'utilisateur est connecté ou non dans le fichier ProtectedRoute.js pour rediriger l'utilisateur vers la page de connexion si il n'est pas connecté
   let navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
   const [alert, setAlert] = useState({ show: false, type: "", msg: "" });
@@ -36,6 +37,7 @@ const Login = ({ setAuth }) => {
 
     // connexion axios post ,  puis faut envoyer les données au serveur pour vérifier si l'utilisateur existe ou non dans la base de données et si le mot de passe est correct ou non
     axios.post("http://localhost/back2/login.php", sendData).then((result) => {
+      // permet de vérifier si l'utilisateur existe ou non dans la base de données et si le mot de passe est correct ou non
       console.log(result.data);
 
       if (result.data.first_name) {
@@ -43,7 +45,7 @@ const Login = ({ setAuth }) => {
         console.log(result.status);
         // stocker les données de l'utilisateur dans le local storage
         window.localStorage.setItem("user", JSON.stringify(result.data));
-        setAuth(result.data); // pour changer le state de l'utilisateur
+        setAuth(result.data); // pour stocker les données de l'utilisateur dans le state auth pour pouvoir les utiliser dans le fichier ProtectedRoute.js pour vérifier si l'utilisateur est connecté ou non.
         navigate(`/add`);
         // showAlert(true, "success", "Connexion réussie");
       } else {
@@ -66,7 +68,6 @@ const Login = ({ setAuth }) => {
             name="email"
             onChange={handleChange}
             value={user.email} // pour réinitialiser le champ email
-            // required
           />
         </div>
         <div className="form-control">

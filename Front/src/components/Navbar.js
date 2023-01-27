@@ -29,26 +29,15 @@ const Navbar = ({ auth }) => {
     return () => clearInterval(interval);
   }, [time]);
 
-  // //quand je me login j'enlève le bouton login et j'affiche le bouton logout
-  //   const [AuthButton, setAuthButton] = useState(false);
-
-  //   const authButton = () => {
-  //     setAuthButton(true);
-  //   };
-
+  // ! Navigate
   let navigate = useNavigate(); // Use for Navigate on Previous
 
   const LogOut = () => {
-    localStorage.removeItem("email"); // Remove Authenticated User
-    localStorage.clear(); // Clear All Local Storage
-    navigate(`/login`); // Navigate to Login Page
-    setUser(auth.first_name("")); // Set User Name to Empty
+    localStorage.clear();
+    navigate(`/`);
+    setUser(auth.first_name("")); // setUser permet de mettre à jour le header pour que le bouton logout disparaisse
+    window.location.reload(); // permet de recharger la page pour que le header se mette à jour
   };
-
-  useEffect(() => {
-    let auth = localStorage.getItem("email");
-    setUser(auth);
-  }, []);
 
   return (
     <header>
@@ -61,23 +50,18 @@ const Navbar = ({ auth }) => {
           onClick={() => setIsmobile(false)}
           on
         >
-          {/* <ul className="nav-links"> */}
-
           <Link to="/" className="home">
             <li>Home</li>
           </Link>
-          {/* si l'utilisateur est connecté on cache le bouton register et si il
-            n'est pas connecté on affiche register */}
-          {/* si l'utilisateur est authentifié on affiche le ajouter */}
-          {auth ? (
-            <Link to="/add" className="ajouter">
+          {auth ? ( // si l'utilisateur est connecté on affiche add
+            <Link to="/add" className="add">
               <li>Add</li>
             </Link>
           ) : (
             "" // si l'utilisateur n'est pas authentifié on affiche rien
           )}
 
-          {!auth && (
+          {!auth && ( // si l'utilisateur n'est pas connecté on affiche register
             <Link to="/register" className="register">
               <li>Register</li>
             </Link>
@@ -89,27 +73,11 @@ const Navbar = ({ auth }) => {
             </Link>
           )}
 
-          {/* <Link to="/login" className="login"></Link> */}
-          {/* si l'utilisateur est connecté on enlève le bouton login / si l'utilisateur n'est pas connecté on affiche le bouton login */}
           {!auth && (
-            <Link to="/login" className="login" onClick={LogOut}>
+            <Link to="/login" className="login">
               <li>Login</li>
             </Link>
           )}
-
-          {/* si l'utilisateur est connecté on affiche son userName et on retire notre login */}
-          {/* {auth && (
-              <span className="logout"> */}
-          {/* Welcome: {SessionUsers} */}
-          {/* <div className="user"> */}
-          {/* Welcome: {auth.first_name} */}
-          {/* {auth.first_name} */}
-          {/* <Link to="/" className="Logout" onClick={LogOut}>
-                    <li>Logout</li>
-                  </Link>
-                </div>
-              </span>
-            )}   */}
         </ul>
 
         <button

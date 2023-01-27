@@ -1,34 +1,36 @@
 <?php
 
-require_once('pdo.php');
+require_once('pdo.php'); // connexion à la base de données
 
-$data = json_decode(file_get_contents("php://input"));
+// trim permet de supprimer les espaces en début et fin de chaîne, htmlspecialchars permet de convertir les caractères spéciaux en entités HTML pour éviter les injections de code , data permet de récupérer les données envoyées par le front-end.
 
-header("Content-Type: application/json; charset=UTF-8");
-$data = json_decode(file_get_contents("php://input"), true);
+header("Content-Type: application/json; charset=UTF-8"); // permet d'encoder les données en json
+$data = json_decode(file_get_contents("php://input"), true); // permet de récupérer les données envoyées par le front-end
 $user_first_name = trim(htmlspecialchars($data["first_name"]));
 $user_last_name = trim(htmlspecialchars($data["last_name"]));
 $user_email = trim(htmlspecialchars($data["email"]));
 $password = password_hash(trim(htmlspecialchars($data["password"])), PASSWORD_ARGON2I);
 
-// $user_first_name = $data->first_name;
-// $user_last_name = $data->last_name;
-// $user_email = $data->email;
-// $password = $data->password;
 
 
-if ($user_first_name && $user_last_name && $user_email && $password) {
-    $sql = "SELECT * FROM user WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
+// si user_first_name, user_last_name, user_email et password existent, on peut créer un nouvel utilisateur dans la base de données
+if ($user_first_name && $user_last_name && $user_email && $password) { // condition pour vérifier si les données envoyées par le front-end existent bien dans la base de données 
+    $sql = "SELECT * FROM user WHERE email = :email"; // requête pour vérifier si l'email existe déjà dans la base de données, si oui, on ne peut pas créer un nouvel utilisateur avec la même adresse email
+    $stmt = $pdo->prepare($sql); // prépare la requête pour éviter les injections SQL, on peut utiliser la méthode prepare() pour préparer une requête SQL à l'exécution et utiliser la méthode execute() pour exécuter la requête préparée avec des valeurs différentes à chaque fois ex: $stmt->execute([ "email" => $user_email ]), on peut utiliser la méthode fetch() pour récupérer les données de la requête SQL ex: $row = $stmt->fetch(PDO::FETCH_ASSOC)
+
     $stmt->execute([
         "email" => $user_email
     ]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC); // si l'email existe déjà dans la base de données, on ne peut pas créer un nouvel utilisateur avec la même adresse email. On utilise la méthode fetch() pour récupérer les données de la requête SQL 
+
+
+
+
 
     if ($row) {
-        echo json_encode(["error" => "email already exist"]);
+        echo json_encode(["error" => "email already exist"]); //error c'est le nom de la clé et "email already exist" c'est la valeur de la clé
     } else {
-        $sql = "INSERT INTO user (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)";
+        $sql = "INSERT INTO user (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)"; // requête pour insérer les données dans la table 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             "first_name" => $user_first_name,
@@ -40,88 +42,4 @@ if ($user_first_name && $user_last_name && $user_email && $password) {
         // echo json_encode($row);
         echo json_encode(["success" => "user created"]);
     }
-
-
-
-
-
-
-    //email existant
-
-    // $sql = "SELECT * FROM register WHERE email = :email";
-    // $stmt = $pdo->prepare($sql);
-    // $stmt->execute([
-    //     "email" => $user_email
-    // ]);
-    // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // // if ($row) {
-    // //     echo json_encode(["error" => "email already exist"]);
-    // // } else {
-    // //     echo json_encode(["success" => "user created"]);
-    // // }
-
-    // echo json_encode($row);
-
-
-
-
-
-
-
-    // $sql = "SELECT * FROM register WHERE email = :email";
-    // $stmt = $pdo->prepare($sql);
-    // $stmt->execute([
-    //     "email" => $user_email
-    // ]);
-
-    // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // if ($user_email === 0) {
-    //     echo json_encode(["error" => "email already exist"]);
-    // } else {
-    //     echo json_encode(["success" => "user created"]);
-    // }
-
-    // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    // if ($row) { //
-    //     echo json_encode(["error" => "email already exist"]);
-    // } else {
-    //     echo json_encode(["success" => "user created"]);
-    // }
 };
-
-
-
-
-
-
-
-
-
-
-    // $sql = "SELECT * FROM register WHERE email = :email";
-    // $stmt = $pdo->prepare($sql);
-    // $stmt->execute([
-    //     "email" => $user_email
-    // ]);
-
-    // $user = $stmt->fetch();
-
-    // if ($user) {
-    //     echo json_encode([
-    //         "error" => "email already exists"
-    //     ]);
-    //     exit();
-    // }
-
-
-
-
-    // si l'email existe déjà dans notre table register on refuse l'enregistrement
-    // if ($user_email === $user_email["email"]) {
-    //     echo json_encode([
-    //         "error" => "email already exists"
-    //     ]);
-    //     exit();
-    // }

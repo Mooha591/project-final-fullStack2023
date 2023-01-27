@@ -10,11 +10,11 @@ import Add from "./Pages/Add";
 
 const App = () => {
   const [auth, setAuth] = useState(
-    JSON.parse(window.localStorage.getItem("user")) || ""
+    JSON.parse(window.localStorage.getItem("user")) || "" //ça permet de récupérer les données de l'utilisateur connecté et de les stocker dans le state auth
   );
 
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
+    localStorage.getItem("darkMode") === "true" // pour vérifier si le mode sombre est activé ou non
   );
 
   const handleDarkMode = () => {
@@ -31,12 +31,6 @@ const App = () => {
     }
   }, [darkMode]);
 
-  // disparaite le bouton login quand on se login et affiche le bouton logout et le nom de l'utilisateur connecté
-  const [authButton, setAuthButton] = useState(false);
-  const AuthButton = () => {
-    setAuthButton(true);
-  };
-
   return (
     <BrowserRouter>
       {/* nav en entête */}
@@ -47,12 +41,9 @@ const App = () => {
           {darkMode ? "🌞" : "🌚"}
         </button>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} auth={auth} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/login"
-            element={<Login setAuth={setAuth} AuthButton={AuthButton} />}
-          />
+          <Route path="/login" element={<Login setAuth={setAuth} />} />
 
           <Route
             path="/add"
@@ -62,15 +53,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute auth={auth}>
-                {/* <Dashboard auth={auth} /> */}
-              </ProtectedRoute>
-            }
-          />
-          {/* <Route path="/logout" element={<Logout />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

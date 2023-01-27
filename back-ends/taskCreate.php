@@ -2,19 +2,13 @@
 require_once('pdo.php');
 $data = json_decode(file_get_contents("php://input"));
 
-// echo json_encode($data["title"]); 
-
-// $title = trim(htmlspecialchars($data->title));
-// $task_id = trim(htmlspecialchars($data->task_id));
-// $user_id = trim(htmlspecialchars($data->user_id));
-
 
 //récupérer l'id de l'utilisateur connecté et l'insérer dans la table task
 
 if ($data->title) {
     $sql = "INSERT INTO task(title, user_id) VALUES (:title, :user_id )  ";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([
+    $stmt->execute([ //on exécute la requête en insérant les données dans la table
         "title" => $data->title,
         "user_id" => $data->user_id,
     ]);
