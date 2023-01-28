@@ -34,6 +34,7 @@ Variables
 /* Register */
 
 h1 {/*!  */
+<<<<<<< HEAD
 letter-spacing: var(--mainSpacing);
 text-align: center;
 margin: 2rem auto;
@@ -51,6 +52,25 @@ margin: 2rem auto;
 
 label {
   font-weight: bold;/*!  */
+=======
+  letter-spacing: var(--mainSpacing);
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.form {
+    display: grid;/*!  */
+    background: var(--clr-white);
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+  }
+
+  label {
+    font-weight: bold;/*!  */
+>>>>>>> d08d59d409b941419437e2f1ce5d928d10e5663b
 }
 .form-control {
   background: transparent;
@@ -68,6 +88,42 @@ label {
 
 
 
+<<<<<<< HEAD
+=======
+  input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid var(--primaryColor);
+    border-radius: var(--mainBorderRadius);
+    color: var(--primaryColor);
+  }
+
+.btn-register{
+  margin: 0 auto; /*! <------ pour centrer btn register on le met dans une div et on passe form à display grid  */
+}
+  .btn {
+    font-weight: 800; /*!  */
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    color: var(--primaryColor);
+    border: 2px solid var(--primaryColor);
+    padding: 0.45rem 0.8rem;
+    display: inline-block;
+    transition: var(--mainTransition); 
+    cursor: pointer;
+    font-size: 0.8rem;
+    background: transparent;
+    border-radius: var(--mainBorderRadius);
+    display: inline-block;
+  }
+  .btn:hover {
+    background: var(--primaryColor);
+    color: var(--mainWhite);
+  }
+
+>>>>>>> d08d59d409b941419437e2f1ce5d928d10e5663b
 
 input[type=text], input[type=password], input[type=email] {
   width: 100%;
