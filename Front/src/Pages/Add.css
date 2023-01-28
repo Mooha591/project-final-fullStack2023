@@ -378,7 +378,7 @@ Variables
     display: block;
     justify-content: center;
     align-items: center;
-    height: 550px;
+    /* height: 550px; */
   }
 
   .container-form-add input{
