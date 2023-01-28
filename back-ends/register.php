@@ -14,23 +14,23 @@ $password = password_hash(trim(htmlspecialchars($data["password"])), PASSWORD_AR
 
 
 // si user_first_name, user_last_name, user_email et password existent, on peut créer un nouvel utilisateur dans la base de données
-if ($user_first_name && $user_last_name && $user_email && $password) { // condition pour vérifier si les données envoyées par le front-end existent bien dans la base de données 
+if ($user_first_name && $user_last_name && $user_email && $password) { // si les données sont renseignées, on peut créer un nouvel utilisateur dans la base de données
     $sql = "SELECT * FROM user WHERE email = :email"; // requête pour vérifier si l'email existe déjà dans la base de données, si oui, on ne peut pas créer un nouvel utilisateur avec la même adresse email
     $stmt = $pdo->prepare($sql); // prépare la requête pour éviter les injections SQL, on peut utiliser la méthode prepare() pour préparer une requête SQL à l'exécution et utiliser la méthode execute() pour exécuter la requête préparée avec des valeurs différentes à chaque fois ex: $stmt->execute([ "email" => $user_email ]), on peut utiliser la méthode fetch() pour récupérer les données de la requête SQL ex: $row = $stmt->fetch(PDO::FETCH_ASSOC)
 
     $stmt->execute([
         "email" => $user_email
     ]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC); // si l'email existe déjà dans la base de données, on ne peut pas créer un nouvel utilisateur avec la même adresse email. On utilise la méthode fetch() pour récupérer les données de la requête SQL 
+    $row = $stmt->fetch(PDO::FETCH_ASSOC); // fetch() permet de récupérer les données de la requête SQL et de les stocker dans un tableau associatif
 
 
 
 
 
-    if ($row) {
-        echo json_encode(["error" => "email already exist"]); //error c'est le nom de la clé et "email already exist" c'est la valeur de la clé
+    if ($row) { // row est un tableau associatif qui contient les données de la requête SQL
+        echo json_encode(["error" => "email already exist"]);
     } else {
-        $sql = "INSERT INTO user (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)"; // requête pour insérer les données dans la table 
+        $sql = "INSERT INTO user (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)"; // requête pour insérer les données dans la table   user de la base de données  si l'email n'existe pas déjà dans la base de données
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             "first_name" => $user_first_name,
@@ -40,6 +40,6 @@ if ($user_first_name && $user_last_name && $user_email && $password) { // condit
 
         ]);
         // echo json_encode($row);
-        echo json_encode(["success" => "user created"]);
+        echo json_encode(["success" => "user created"]); //success c'est le nom de la clé et "user created" c'est la valeur de la clé
     }
 };

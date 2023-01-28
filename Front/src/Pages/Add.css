@@ -4,376 +4,531 @@ Variables
 ======
 */
 :root {
-    --primaryLightColor: #d4e6a5;
-    --primaryColor: #476a2e;
-    --primaryDarkColor: #c02c03;
-    --mainWhite: #fff;
-    --offWhite: #f7f7f7;
-    --mainBackground: #f1f5f8;
-    --mainOverlay: rgba(35, 10, 36, 0.4);
-    --mainBlack: #222;
-    --mainGrey: #ececec;
-    --darkGrey: #afafaf;
-    --mainRed: #bd0303;
-    --mainTransition: all 0.3s linear;
-    --mainSpacing: 0.3rem;
-    --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
-    --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
-    --mainBorderRadius: 0.25rem;
-    --smallWidth: 85vw;
-    --maxWidth: 40rem;
-    --fullWidth: 1170px;
-  
-    --clr-red-dark: hsl(360, 67%, 44%);
-    --clr-red-light: hsl(360, 71%, 66%);
-    --clr-green-dark: hsl(125, 67%, 44%);
-    --clr-green-light: hsl(125, 71%, 66%);
-    --clr-black: #222;
+  --primaryLightColor: #d4e6a5;
+  --primaryColor: #142e02;
+  --primaryDarkColor: #c02c03;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBackground: #f1f5f8;
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.3rem;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 70vw;
+  --maxWidth: 40rem;
+  --fullWidth: 1170px;
+
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(125, 71%, 66%);
+  --clr-black: #222;
+  }
+
+/*!  media queries vu mobile FIRST */
+
+@media only screen and (max-width: 600px)   { 
+
+  .container-alpha {
+  display: grid;
+  }
+
+/** container form  */
+  .container-form-add{ 
+      margin: 0 auto;
+      display: grid;
+      justify-items: center;
+      grid-template-rows: 1fr 2fr 1fr;
+      align-items: center;
+      grid-gap: 1rem; 
+      height: 300px;
+  }
+
+
+  /** InputText */
+
+  .container-form-add input{
+      width: 100%;
+      height: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      resize: vertical;
+  }
+
+
+  .div-utilisateur{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 80px;
+  }
+
+  .utilisateur {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: red;
+  }
+
+  .div-btn {
+    justify-self: center;
     }
 
-/*  button dark-mode */
-
-.dark-mode__toggle {
-  display: flex;
-  top: 80px;
-  right: 30px;
-  padding: 0.5rem;
-  cursor: pointer;
-  /* z-index: 10; */
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-}
-
-.dark-mode{
-  background-color: #333;
-  color: rgb(112, 107, 107);
-
-}
-
-
-/* en mode dark-mode mon background de tache devient rouge */
-.dark-mode .HeaderTask{
-  background-color:var(--clr-red-light);
-  color: white;
-}
-
-
-  /* form container search */
-
-  .form {
-    background: var(--clr-white);
-    max-width: 
-    500px;
-    margin: 0 auto;
-    margin-bottom: 4rem;
-    padding: 1rem 2rem;
-    border-radius: var(--radius);
-  }
-
-  /* margin block task search */
-  .form-group{
-  margin: 1rem; 
-}
-
-
-/* input  */
-.form-control {
-    background: transparent;
-    border: 1px solid var(--primaryColor);
-    border-radius: var(--mainBorderRadius);
-    color: var(--primaryColor);
-    font-size: 1rem;
-    letter-spacing: var(--mainSpacing);
-    padding: 0.5rem 0.75rem;
-    text-transform: capitalize;
-    width: 100%;
-    margin-bottom: 1rem;
-    transition: var(--mainTransition);
-  }
-
-
-  
-
-    /* button add task */
+      /* noTask */
+  .noTask h3{
+    text-align: center;
+    } 
 
     .addTask{
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        cursor: pointer;
+      font-weight: 700;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: capitalize;
+      background-color: transparent;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      }
+      
+      .addTask:hover{
+        background-color: teal;
       }
 
-        .addTask:hover{
-            background-color: rgb(173, 171, 171);
-            box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+      /* container des tâches */
+
+      .container-list-items {
+        margin: 2rem auto;
+        width: 75vw;
+        max-width: 800px;
         }
 
-   
+        .container-list-items .task {
+          border: 1px solid var(--primaryColor); 
+          display: grid;
+          grid-template-columns: 4fr 1fr 1fr;
+          margin: 1rem auto;
+          padding: 0.7rem;
+          }
 
-        
-/*! les tâches enregistré , table , th , items */
-.tables {
-    border-collapse: collapse;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 2rem auto;
-    max-width: 80vw;
-    min-width: 30vw;
-    background: var(--clr-white);
-    box-shadow: var(--light-shadow);
-    position: relative;
-    border-radius: var(--mainBorderRadius);
-    transition: var(--mainTransition);
-    padding: 1rem;
-    margin-bottom: 1rem;   
-  }
-        
-
-  /*! items (task)*/
-.items {
-    /* display: flex; */
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    position: relative;
-    color: black;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 100%;
-    height: 100%;  
-  }
-
-    /* .items:hover{
-        background-color: rgb(173, 171, 171);
-        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-    } */
-      .items:hover{
-        background-color: rgb(173, 171, 171);
-        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-    }
-
-    .items, td {
-      /* ! */
-        border: 1px solid var(--primaryColor); 
-        border-radius: var(--mainBorderRadius);
-        color: var(--primaryColor);
-        font-size: 1rem;
-        letter-spacing: var(--mainSpacing);
-        padding: 0.5rem 0.75rem;
-        text-transform: capitalize;
-        width: 100%;
-        margin-bottom: 1rem;
-        transition: var(--mainTransition);
-        }
-
-        .items, th {
-            border: 1px solid var(--primaryColor);
-            border-radius: var(--mainBorderRadius);
-            color: var(--primaryColor);
-            font-size: 1rem;
-            letter-spacing: var(--mainSpacing);
-            padding: 0.5rem 0.75rem;
-            text-transform: capitalize;
-            width: 100%;
-            margin-bottom: 1rem;
-            transition: var(--mainTransition);
+          /**btn edit delete  */
+          .div-btn {
+            justify-self: center;
             }
 
-            .items, tr {
-                border: 1px solid var(--primaryColor);
-                border-radius: var(--mainBorderRadius);
-                color: var(--primaryColor);
-                font-size: 1rem;
-                letter-spacing: var(--mainSpacing);
-                padding: 0.5rem 0.75rem;
-                text-transform: capitalize;
-                width: 100%;
-                margin-bottom: 1rem;
-                transition: var(--mainTransition);
+            .buttonEdit, .buttonDelete{
+              font-size: 1rem;
+              background-color: transparent;
+              cursor: pointer;
+              border: transparent;
+              border-radius: var(--border-radius);
+              padding: 0.3rem;
+              box-shadow: var(--shadow);
+              display: inline-block;
+
+            }
+          
+            /* *color btn */
+
+            .buttonEdit{
+              color: var(--clr-green-dark);
+            }
+
+            .buttonDelete{
+              color: var(--clr-red-dark);
+            }
+
+            /** btn deleteAll */
+
+            .div-deleteAll {
+              margin: 0 auto;
+              }
+              .deleteAll {
+              text-transform: capitalize;
+              border: 1px red ;
+              color: crimson;
+              font-size: 1rem;
+              cursor: pointer;
+              border: transparent;
+              border-radius: var(--mainBorderRadius);
+              padding: 0.7rem;
+              box-shadow: 1px 3px 2px teal;
+              background-color: var(--clr-black);
+              }
+              
+              .deleteAll:hover {
+              background-color: var(--mainRed);
+              color: snow;
+              }
+
+              /* dark-modeTn */
+              .dark-mode__toggle {
+                display: flex;
+                top: 80px;
+                right: 30px;
+                padding: 0.5rem;
+                cursor: pointer;
+                /* z-index: 10; */
+                position: absolute;
+                align-items: center;
+                justify-content: center;
                 }
 
-                .items, table {
-                    border: 1px solid var(--primaryColor);
-                    border-radius: var(--mainBorderRadius);
-                    color: var(--primaryColor);
-                    font-size: 1rem;
-                    letter-spacing: var(--mainSpacing);
-                    padding: 0.5rem 0.75rem;
-                    text-transform: capitalize;
-                    width: 100%;
-                    margin-bottom: 1rem;
-                    transition: var(--mainTransition);
-                    }
 
-                    .items, thead {
-                        border: 1px solid var(--primaryColor);
-                        border-radius: var(--mainBorderRadius);
-                        color: var(--primaryColor);
-                        font-size: 1rem;
-                        letter-spacing: var(--mainSpacing);
-                        padding: 0.5rem 0.75rem;
-                        text-transform: capitalize;
-                        width: 100%;
-                        margin-bottom: 1rem;
-                        transition: var(--mainTransition);
-                        }
+              /** Darkmode button style +  color div style + view Desktop */
 
-                        .items, tbody {
-                            border: 1px solid var(--primaryColor);
+
+            }
+
+
+            /** vu Tablette */
+            @media only screen and (min-width: 600px) and (max-width: 779px){
+  
+    .container-alpha {
+    display: grid;
+    }
+
+    /** container form  */
+    .container-form-add{ 
+        margin: 0 auto;
+        display: grid;
+        justify-items: center;
+        grid-template-rows: 1fr 2fr 1fr;
+        align-items: center;
+        grid-gap: 1rem; 
+        height: 300px;
     }
 
 
-    .buttonEdit{
+    /** InputText */
+
+    .container-form-add input{
+        width: 460px;
+        height: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        padding: 12px 20px;
+        box-sizing: border-box; 
+        resize: vertical; 
+
+    }
+
+    .addTask{
+      font-weight: 700;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: capitalize;
+      background-color: transparent;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      }
+      
+      .addTask:hover{
+        background-color: teal;
+      
+    }
+
+    .div-utilisateur{
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 80px;
+    }
+
+    .utilisateur {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: crimson;
+      text-transform: capitalize;
+    }
+
+
+    .div-btn {
+      justify-self: center;
+      }
+
+        /* noTask */
+    .noTask h3{
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .container-list-items{
+      margin: 2rem auto;
+      width: 75vw;
+      max-width: 800px;
+    }
+
+    .task{
+      border: 1px solid var(--primaryColor); 
+      display: grid;
+      grid-template-columns: 4fr 1fr 1fr; 
+      margin: 1rem auto;
+      padding: 0.7rem;
+    }
+
+    .task h3{
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--clr-black);
+    }
+ 
+}
+
+
+/* view tablette, desktop */
+
+@media only screen and (min-width: 780px) and (max-width: 1024px){
+  
+  .container-alpha{
+    display: grid;
+  }
+
+
+  .div-utilisateur{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 2px;
+  }
+
+  .utilisateur{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: crimson;
+    text-transform: capitalize;
+  }
+
+  .container-form-add{
+    margin: 0 auto;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 1fr 2fr 1fr;
+    align-items: center;
+    grid-gap: 1rem; 
+    height: 300px;
+    width: 100%;
+  }
+
+  .container-form-add input{
+    width: 460px;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    padding: 12px 20px;
+    box-sizing: border-box; 
+    resize: vertical; 
+
+  }
+
+  .addTask{
+    font-weight:700;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    cursor:pointer;
+  }
+
+  .addTask:hover{
+    background-color: teal;
+  }
+
+
+  .container-list-items{
+    margin: 2rem auto;
+    width: 75vw;
+    max-width: 800px;
+  }
+
+
+  .task{
+    border: 1px solid var(--primaryColor); 
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr; 
+    margin: 1rem auto;
+    padding: 0.7rem;
+  }
+
+  
+
+ 
+}
+
+
+/* !vu pc */
+@media screen and (min-width: 1025px) {
+
+ 
+  .container-alpha{
+    display:block;
+  }
+
+  .container-form-add{
+    margin: 0 auto;
+    justify-items: center;
+    align-items: center;
+    width: 30%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+  }
+
+  .container-form-add input{
+    width: 460px;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    padding: 12px 20px;
+    box-sizing: border-box; 
+    resize: vertical; 
+
+  }
+
+
+
+
+  .addTask{
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    top:12px;
+    margin-left: 20px;
+    position: relative;
+    }
+
+    .addTask:hover{
+      background-color: teal;
+    }
+
+
+    .task{
+      border: 1px solid var(--primaryColor); 
+      display: grid;
+      /* ! */
+      grid-template-columns: 4fr 1fr 1fr;
+      margin: 1rem auto;
+      padding: 0.7rem;
+    }
+
+    .container-list-items{
+      margin: 2rem auto;
+      width: 75vw;
+      max-width: 1500px;
+    }
+
+    .div-utilisateur{
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 2px;
+
+    }
+
+
+    .utilisateur{
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: crimson;
+      text-transform: capitalize;
+    }
+
+
+    .noTask{
+      margin: 0 auto;
+      width: 30%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+
+ 
+
+
+
+
+}
+
+
+
+
+
+
+    /**btn edit delete  */
+
+    .div-btn {
+      justify-self: center;
+      }
+
+      .buttonEdit, .buttonDelete{
         font-size: 1rem;
+        background-color: transparent;
+        cursor: pointer;
+        border: transparent;
+        border-radius: var(--border-radius);
+        padding: 0.3rem;
+        box-shadow: var(--shadow);
+        display: inline-block;
+
+      }
+
+      /* *color btn */
+
+      .buttonEdit{
         color: var(--clr-green-dark);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        transition: var(--transition);
       }
 
-        .buttonEdit:hover{
-            background-color: var(--clr-green-dark);
-            color: var(--clr-white);
-        }
-
-    .buttonDelete{
-        font-size: 1rem;
+      .buttonDelete{
         color: var(--clr-red-dark);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        transition: var(--transition);
       }
 
-        .buttonDelete:hover{
-            background-color: var(--clr-red-dark);
-            color: var(--clr-white);
-        }
 
-    .deleteAll{
+      /** btn deleteAll */
+
+      .div-deleteAll {
+        margin: 0 auto;
+        }
+        .deleteAll {
+        text-transform: capitalize;
+        border: 1px red ;
+        color: crimson;
         font-size: 1rem;
-        color: black;
-        background-color: var(--clr-red-dark);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
         cursor: pointer;
-        margin: 5px;
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-        .deleteAll:hover{
-            background-color: var(--clr-red-light);
-            color: var(--clr-white);
+        border: transparent;
+        border-radius: var(--mainBorderRadius);
+        padding: 0.7rem;
+        box-shadow: 1px 3px 2px teal;
+        background-color: var(--clr-black);
+        }
+        
+        .deleteAll:hover {
+        background-color: var(--mainRed);
+        color: snow;
         }
 
-    /* *************************************************************************************** */
-
-
-        /** media queries  */
-
-
-
-            @media screen and (max-width:780px) {
-              .form {
-                margin-top: 4rem;
-              }
-
-              h1{
-                margin-top: 80px;
-              }
-
-              }
-
-               @media screen and (max-width: 780px){ 
-                 tr, th {   
-                    display:flex;
-                    flex-direction: column;    
-                    background-color: #ececec;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 0;
-                    margin: 0;
-                    width: 100%;
-                    height: 100%;
-                  }
-                  
-              
-                 td { 
-                   display: flex;
-                   flex-direction: column;
-                   justify-content: center;
-                   align-items: center;
-                   margin: 0 auto;
-                   width: 100%;
-                   height: 100%;
-                   padding: 0;
-                   margin: 0;
-                 }
-               
-            tr, .items{
-                display: flex;
-                flex-direction: column;
-                margin: 0 auto;
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-                background-color: white;
-                margin-top : 10px;
-            }
-            .tables {
-             border-collapse: separate;
-             border:none;
-            }
-               }
-               
-         
-               
-
-
-    
-    
-.utilisateur{
-  display: flex;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  margin-left: 5px;
-  margin-top: 5px;
- color: red;
- text-transform: capitalize;
-}
-
-
-@media screen and (max-width: 720px){ 
- .form-group {
-    margin-top: 4rem;
- }
-}
-
+        /* dark-modeTn */
+        .dark-mode__toggle {
+          display: flex;
+          top: 80px;
+          right: 30px;
+          padding: 0.5rem;
+          cursor: pointer;
+          /* z-index: 10; */
+          position: absolute;
+          align-items: center;
+          justify-content: center;
+          }
