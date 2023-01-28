@@ -188,7 +188,6 @@ li:hover{
      /* ma navbar et mon menu nav-links-mobile reste collé à la navbar à l'ouverture du menu 
        mobile */
       .nav-links-mobile, .navbar {
-         position: fixed; 
          width: 100%;
 
       }

@@ -36,7 +36,7 @@ const Login = ({ setAuth }) => {
     };
 
     // connexion axios post ,  puis faut envoyer les données au serveur pour vérifier si l'utilisateur existe ou non dans la base de données et si le mot de passe est correct ou non
-    axios.post("http://localhost/back2/login.php", sendData).then((result) => {
+    axios.post("http://localhost/back-ends/login.php", sendData).then((result) => {
       // permet de vérifier si l'utilisateur existe ou non dans la base de données et si le mot de passe est correct ou non
       console.log(result.data);
 

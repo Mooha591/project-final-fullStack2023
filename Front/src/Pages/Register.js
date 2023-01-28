@@ -66,7 +66,7 @@ const Register = () => {
     } else {
       // si les champs sont remplis on envoie les données au serveur
       axios
-        .post("http://localhost/back2/register.php", sendData)
+        .post("http://localhost/back-ends/register.php", sendData)
         .then((result) => {
           if (result.data.error) {
             showAlert(true, "danger", "Email déjà existant");
@@ -128,9 +128,11 @@ const Register = () => {
             value={data.password}
           />
         </div>
+        <div className="btn-register">
         <button type="submit" className="btn">
           Register
         </button>
+        </div>
       </form>
     </div>
   );

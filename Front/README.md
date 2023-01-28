@@ -1,3 +1,42 @@
+# DATABASE:
+
+CREATE DATABASE react-login;
+
+CREATE TABLE `user` ( 
+
+`user_id` int(11) NOT NULL AUTO_INCREMENT, 
+
+`first_name` varchar(255) DEFAULT NULL, 
+
+`last_name` varchar(255) DEFAULT NULL, 
+
+`password` varchar(255) DEFAULT NULL, 
+
+`email` varchar(255) DEFAULT NULL, PRIMARY KEY (`user_id`) 
+
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `task` (
+
+ `task_id` int(11) NOT NULL AUTO_INCREMENT,
+
+ `title` varchar(255) DEFAULT NULL,
+
+ `user_id` int(11) DEFAULT NULL,
+
+ PRIMARY KEY (`task_id`),
+
+ KEY `user_id` (`user_id`),
+
+ CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES 
+`user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+
+) ENGINE=InnoDB AUTO_INCREMENT=406 DEFAULT CHARSET=utf8
+
+# END DATABASE
+
+----------------------------------------------------------------
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

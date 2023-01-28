@@ -33,8 +33,14 @@ Variables
 
 /* Register */
 
+h1 {/*!  */
+  letter-spacing: var(--mainSpacing);
+  text-align: center;
+  margin: 2rem auto;
+}
 
 .form {
+    display: grid;/*!  */
     background: var(--clr-white);
     max-width: 500px;
     margin: 0 auto;
@@ -43,6 +49,9 @@ Variables
     border-radius: var(--radius);
   }
 
+  label {
+    font-weight: bold;/*!  */
+}
 .form-control {
     background: transparent;
     border: 1px solid var(--primaryColor);
@@ -70,8 +79,11 @@ Variables
     color: var(--primaryColor);
   }
 
-
+.btn-register{
+  margin: 0 auto; /*! <------ pour centrer btn register on le met dans une div et on passe form à display grid  */
+}
   .btn {
+    font-weight: 800; /*!  */
     text-transform: uppercase;
     letter-spacing: var(--mainSpacing);
     color: var(--primaryColor);

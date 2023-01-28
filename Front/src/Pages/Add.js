@@ -4,7 +4,7 @@ import axios from "axios";
 import Alert from "../components/Alert";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import "./Add.css";
-const url = "http://localhost/back2/";
+const url = "http://localhost/back-ends/";
 
 const Add = ({ auth }) => {
   const [todos, setTodos] = useState([]); // todos = tableau de tâche vide au début pour afficher les données du server dans le tableau
@@ -102,21 +102,26 @@ const Add = ({ auth }) => {
   return (
     <>
       <article>
-        <form className="form" onSubmit={handleSubmit}>
+        <div className="container-alpha">
+        <form className="container-form-add" onSubmit={handleSubmit}>
+          <div className="div-utilisateur">
           {alert.show && <Alert {...alert} removeAlert={showAlert} />}
           {auth && (
             <span className="utilisateur">
-              Bonjour :{auth.first_name} {auth.last_name}
+              Bonjour : {auth.first_name} {auth.last_name}
             </span>
           )}
-          <div className="form-group">
-            <label htmlFor="Tasks">
-              <h3>Tâches : {todos.length}</h3>
-            </label>
+          </div>
+          <div className="form-group-add">
+          {todos.length < 1 && ( 
+          <label htmlFor="Tasks">
+            <h3>Tâches : {todos.length}</h3>
+          </label>
+          )}
 
             <input
               type="text"
-              className="form-control"
+              className="form-control-add"
               id="Tasks"
               placeholder="Enter Task"
               onChange={(e) => setTask(e.target.value)}
@@ -127,52 +132,43 @@ const Add = ({ auth }) => {
             {isEditing ? "modifier la tâche" : "ajouter une tâche"}
           </button>
         </form>
-
-        {/* <div className="HeaderTask">Tache</div> */}
-        <table className="tables">
-          {/* table, tbody , tr , td </tbody !! sinon warning navigateur */}
-          <tbody>
-            {/* //:si on a pas de tâche on cache notre table sinon on l'affiche */}
-            {todos.length > 0 && ( // si on a plus de 0 tâche on affiche notre table
-              <tr>
-                <th scope="col">Tâche</th>
-                <th scope="col">modifier</th>
-                <th scope="col">supprimer</th>
-              </tr>
-            )}
+            <div>
             {todos.map((task) => {
               const { task_id, title } = task; // destructuring
               return (
-                <tr key={task_id} className="items">
-                  <td>{title}</td>
-                  <td>
+                <div className="container-list-items">
+                <div key={task_id} className="task">
+                  <div className="title-item">{title}</div>
+                  <div className="div-btn">
                     <button
                       className="buttonEdit"
                       onClick={() => editTasks(task_id)}
                     >
                       <FaEdit />
                     </button>
-                  </td>
-                  <td>
+                  </div>
+                  <div className="div-btn">
                     <button
                       className="buttonDelete"
                       onClick={() => deleteTask(task_id)}
                     >
                       <FaTrash />
                     </button>
-                  </td>
-                </tr>
+                  </div>
+                </div>
+          </div>
               );
             })}
-          </tbody>
-        </table>
+          </div>
         {todos.length > 0 && (
-          <button
-            className="deleteAll"
-            onClick={() => AlldeleteTaskUsers(auth.user_id)} // supprimer toute les tâches d'un utilisateur par son id
-          >
-            supprimer toutes les tâches
-          </button>
+          <div className="div-deleteAll">
+            <button
+              className="deleteAll"
+              onClick={() => AlldeleteTaskUsers(auth.user_id)} // supprimer toute les tâches d'un utilisateur par son id
+              >
+              supprimer toutes les tâches
+            </button>
+          </div>
         )}
 
         {todos.length < 1 && (
@@ -180,9 +176,81 @@ const Add = ({ auth }) => {
             <h3>Vous n'avez pas de tâche</h3>
           </div>
         )}
+        </div>
       </article>
     </>
   );
 };
 
 export default Add;
+
+
+
+
+
+
+
+
+
+
+
+
+//         <table className="tables">
+//           {/* table, tbody , tr , td </tbody !! sinon warning navigateur */}
+//             {/* //:si on a pas de tâche on cache notre table sinon on l'affiche */}
+//             {todos.length > 0 && ( // si on a plus de 0 tâche on affiche notre table
+//             <thead className="table-thead">
+//               <tr>
+//                 <th scope="col">Tâche</th>
+//                 <th scope="col">modifier</th>
+//                 <th scope="col">supprimer</th>
+//               </tr>
+//             </thead>
+//             )}
+//             {todos.map((task) => {
+//               const { task_id, title } = task; // destructuring
+//               return (
+//                 <tbody>
+//                 <tr key={task_id} className="items">
+//                   <td className="title-item">{title}</td>
+//                   <td>
+//                     <button
+//                       className="buttonEdit"
+//                       onClick={() => editTasks(task_id)}
+//                     >
+//                       <FaEdit />
+//                     </button>
+//                   </td>
+//                   <td>
+//                     <button
+//                       className="buttonDelete"
+//                       onClick={() => deleteTask(task_id)}
+//                     >
+//                       <FaTrash />
+//                     </button>
+//                   </td>
+//                 </tr>
+//           </tbody>
+//               );
+//             })}
+//         </table>
+//         {todos.length > 0 && (
+//           <button
+//             className="deleteAll"
+//             onClick={() => AlldeleteTaskUsers(auth.user_id)} // supprimer toute les tâches d'un utilisateur par son id
+//           >
+//             supprimer toutes les tâches
+//           </button>
+//         )}
+
+//         {todos.length < 1 && (
+//           <div className="noTask">
+//             <h3>Vous n'avez pas de tâche</h3>
+//           </div>
+//         )}
+//       </article>
+//     </>
+//   );
+// };
+
+// export default Add;

@@ -5,7 +5,7 @@ Variables
 */
 :root {
     --primaryLightColor: #d4e6a5;
-    --primaryColor: #476a2e;
+    --primaryColor: #142e02;
     --primaryDarkColor: #c02c03;
     --mainWhite: #fff;
     --offWhite: #f7f7f7;
@@ -20,7 +20,7 @@ Variables
     --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
     --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
     --mainBorderRadius: 0.25rem;
-    --smallWidth: 85vw;
+    --smallWidth: 70vw;
     --maxWidth: 40rem;
     --fullWidth: 1170px;
   
@@ -30,6 +30,8 @@ Variables
     --clr-green-light: hsl(125, 71%, 66%);
     --clr-black: #222;
     }
+
+
 
 /*  button dark-mode */
 
@@ -53,327 +55,151 @@ Variables
 
 
 /* en mode dark-mode mon background de tache devient rouge */
-.dark-mode .HeaderTask{
+.dark-mode .table-thead{
   background-color:var(--clr-red-light);
   color: white;
 }
 
+.dark-mode .task{
+  background-color:teal;
+  color: white;
+}
+.dark-mode .title-item{
+  color: var(--offWhite);
+}
+.dark-mode .noTask h3{
+  color: var(--offWhite);
+}
+.dark-mode .form-group-add h3{
+  color: var(--offWhite);
+}
+.dark-mode .addTask {
+  color: var(--offWhite);
+  background-color: var(--clr-black);
+}
 
-  /* form container search */
+/* article-> form */
+.container-form-add {
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 1fr 2fr 1fr;
+  align-items: center;
+  height: 300px;
+}
 
-  .form {
-    background: var(--clr-white);
-    max-width: 
-    500px;
-    margin: 0 auto;
-    margin-bottom: 4rem;
-    padding: 1rem 2rem;
-    border-radius: var(--radius);
-  }
+.form-group-add {
+  margin: 0 auto;
+  display: grid;
+  height: 50%;
+  align-items: center;
+}
 
-  /* margin block task search */
-  .form-group{
-  margin: 1rem; 
+.form-group-add h3 {
+  text-align: center;
+}
+
+/* USER infos */
+.div-utilisateur {
+  text-align: center;
+  margin: 0 auto;
+}
+.utilisateur{
+  color: crimson;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
 
 /* input  */
-.form-control {
-    background: transparent;
-    border: 1px solid var(--primaryColor);
-    border-radius: var(--mainBorderRadius);
-    color: var(--primaryColor);
+.form-control-add {
     font-size: 1rem;
     letter-spacing: var(--mainSpacing);
-    padding: 0.5rem 0.75rem;
     text-transform: capitalize;
-    width: 100%;
-    margin-bottom: 1rem;
     transition: var(--mainTransition);
   }
 
-
-  
+  /* noTask */
+.noTask h3{
+  text-align: center;
+} 
 
     /* button add task */
 
-    .addTask{
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-
-        .addTask:hover{
-            background-color: rgb(173, 171, 171);
-            box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-        }
-
-   
-
-        
-/*! les tâches enregistré , table , th , items */
-.tables {
-    border-collapse: collapse;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 2rem auto;
-    max-width: 80vw;
-    min-width: 30vw;
-    background: var(--clr-white);
-    box-shadow: var(--light-shadow);
-    position: relative;
-    border-radius: var(--mainBorderRadius);
-    transition: var(--mainTransition);
-    padding: 1rem;
-    margin-bottom: 1rem;   
-  }
-        
-
-  /*! items (task)*/
-.items {
-    /* display: flex; */
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    position: relative;
-    color: black;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 100%;
-    height: 100%;  
-  }
-
-    /* .items:hover{
-        background-color: rgb(173, 171, 171);
-        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-    } */
-      .items:hover{
-        background-color: rgb(173, 171, 171);
-        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-    }
-
-    .items, td {
-      /* ! */
-        border: 1px solid var(--primaryColor); 
-        border-radius: var(--mainBorderRadius);
-        color: var(--primaryColor);
-        font-size: 1rem;
-        letter-spacing: var(--mainSpacing);
-        padding: 0.5rem 0.75rem;
-        text-transform: capitalize;
-        width: 100%;
-        margin-bottom: 1rem;
-        transition: var(--mainTransition);
-        }
-
-        .items, th {
-            border: 1px solid var(--primaryColor);
-            border-radius: var(--mainBorderRadius);
-            color: var(--primaryColor);
-            font-size: 1rem;
-            letter-spacing: var(--mainSpacing);
-            padding: 0.5rem 0.75rem;
-            text-transform: capitalize;
-            width: 100%;
-            margin-bottom: 1rem;
-            transition: var(--mainTransition);
-            }
-
-            .items, tr {
-                border: 1px solid var(--primaryColor);
-                border-radius: var(--mainBorderRadius);
-                color: var(--primaryColor);
-                font-size: 1rem;
-                letter-spacing: var(--mainSpacing);
-                padding: 0.5rem 0.75rem;
-                text-transform: capitalize;
-                width: 100%;
-                margin-bottom: 1rem;
-                transition: var(--mainTransition);
-                }
-
-                .items, table {
-                    border: 1px solid var(--primaryColor);
-                    border-radius: var(--mainBorderRadius);
-                    color: var(--primaryColor);
-                    font-size: 1rem;
-                    letter-spacing: var(--mainSpacing);
-                    padding: 0.5rem 0.75rem;
-                    text-transform: capitalize;
-                    width: 100%;
-                    margin-bottom: 1rem;
-                    transition: var(--mainTransition);
-                    }
-
-                    .items, thead {
-                        border: 1px solid var(--primaryColor);
-                        border-radius: var(--mainBorderRadius);
-                        color: var(--primaryColor);
-                        font-size: 1rem;
-                        letter-spacing: var(--mainSpacing);
-                        padding: 0.5rem 0.75rem;
-                        text-transform: capitalize;
-                        width: 100%;
-                        margin-bottom: 1rem;
-                        transition: var(--mainTransition);
-                        }
-
-                        .items, tbody {
-                            border: 1px solid var(--primaryColor);
-    }
-
-
-    .buttonEdit{
-        font-size: 1rem;
-        color: var(--clr-green-dark);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-        .buttonEdit:hover{
-            background-color: var(--clr-green-dark);
-            color: var(--clr-white);
-        }
-
-    .buttonDelete{
-        font-size: 1rem;
-        color: var(--clr-red-dark);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-        .buttonDelete:hover{
-            background-color: var(--clr-red-dark);
-            color: var(--clr-white);
-        }
-
-    .deleteAll{
-        font-size: 1rem;
-        color: black;
-        background-color: var(--clr-red-dark);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-        .deleteAll:hover{
-            background-color: var(--clr-red-light);
-            color: var(--clr-white);
-        }
-
-    /* *************************************************************************************** */
-
-
-        /** media queries  */
-
-
-
-            @media screen and (max-width:780px) {
-              .form {
-                margin-top: 4rem;
-              }
-
-              h1{
-                margin-top: 80px;
-              }
-
-              }
-
-               @media screen and (max-width: 780px){ 
-                 tr, th {   
-                    display:flex;
-                    flex-direction: column;    
-                    background-color: #ececec;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 0;
-                    margin: 0;
-                    width: 100%;
-                    height: 100%;
-                  }
-                  
-              
-                 td { 
-                   display: flex;
-                   flex-direction: column;
-                   justify-content: center;
-                   align-items: center;
-                   margin: 0 auto;
-                   width: 100%;
-                   height: 100%;
-                   padding: 0;
-                   margin: 0;
-                 }
-               
-            tr, .items{
-                display: flex;
-                flex-direction: column;
-                margin: 0 auto;
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-                background-color: white;
-                margin-top : 10px;
-            }
-            .tables {
-             border-collapse: separate;
-             border:none;
-            }
-               }
-               
-         
-               
-
-
-    
-    
-.utilisateur{
-  display: flex;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  margin-left: 5px;
-  margin-top: 5px;
- color: red;
- text-transform: capitalize;
+.addTask{
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-
-@media screen and (max-width: 720px){ 
- .form-group {
-    margin-top: 4rem;
- }
+.addTask:hover{
+    background-color: teal;
 }
 
+.container-list-items {
+  margin: 2rem auto;
+  width: 75vw;
+  max-width: 800px;
+}
+
+.container-list-items .task {
+  border: 1px solid var(--primaryColor); 
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  margin: 1rem auto;
+  padding: 0.7rem;
+}
+
+.div-btn {
+  justify-self: center;
+}
+
+.buttonEdit, .buttonDelete {
+font-size: 1rem;
+background-color: transparent;
+cursor: pointer;
+border: transparent;
+border-radius: var(--border-radius);
+padding: 0.3rem;
+box-shadow: var(--shadow);
+display: inline-block;
+}
+
+.buttonEdit {
+  color: green;
+}
+.dark-mode .buttonEdit {
+  color: #d4e6a5;
+}
+.buttonDelete {
+  color: var(--primaryDarkColor);
+}
+
+/* Alpha container */
+.container-alpha {
+  display: grid;
+}
+.div-deleteAll {
+  margin: 0 auto;
+}
+.deleteAll {
+  text-transform: capitalize;
+  border: 1px red ;
+  color: crimson;
+  font-size: 1rem;
+  cursor: pointer;
+  border: transparent;
+  border-radius: var(--mainBorderRadius);
+  padding: 0.7rem;
+  box-shadow: 1px 3px 2px teal;
+  background-color: var(--clr-black);
+}
+
+.deleteAll:hover {
+  background-color: var(--mainRed);
+  color: snow;
+}
