@@ -128,9 +128,11 @@ const Register = () => {
             value={data.password}
           />
         </div>
-        <button type="submit" className="btn">
-          Register
-        </button>
+        <div className="btn-register">
+          <button type="submit" className="btn">
+            Register
+          </button>
+        </div>
       </form>
     </div>
   );

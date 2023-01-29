@@ -102,45 +102,50 @@ const Add = ({ auth }) => {
   return (
     <>
       <article>
+        <div className="div-alert">
+          {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+        </div>
         <div className="container-alpha">
           <form className="container-form-add" onSubmit={handleSubmit}>
             <div className="div-utilisateur">
-              {alert.show && <Alert {...alert} removeAlert={showAlert} />}
               {auth && (
                 <span className="utilisateur">
                   Bonjour : {auth.first_name} {auth.last_name}
                 </span>
               )}
             </div>
-
             <div className="form-group-add">
-              <label htmlFor="Tasks">
-                <h3>Tâches : {todos.length}</h3>
-              </label>
-
-              <input
-                type="text"
-                className="form-control-add"
-                id="Tasks"
-                placeholder="Enter Task"
-                onChange={(e) => setTask(e.target.value)}
-                value={task}
-              />
+              {/* {todos.length < 1 && (  */}
+              <div className="nbr-tasks">
+                <h3 htmlFor="Tasks">Tâches : {todos.length}</h3>
+              </div>
+              {/* )} */}
+              <div className="input-form-add">
+                <input
+                  type="text"
+                  className="form-control-add"
+                  id="Tasks"
+                  placeholder="enter task"
+                  onChange={(e) => setTask(e.target.value)}
+                  value={task}
+                />
+              </div>
+              <div className="div-btn-addTask">
+                <button type="submit" className="addTask">
+                  {isEditing ? "modifier la tâche" : "ajouter une tâche"}
+                </button>
+              </div>
             </div>
-
-            <>
-              <button type="submit" className="addTask">
-                {isEditing ? "modifier la tâche" : "ajouter une tâche"}
-              </button>
-            </>
           </form>
           <div>
             {todos.map((task) => {
               const { task_id, title } = task; // destructuring
               return (
-                <div key={task_id} className="container-list-items">
+                <div className="container-list-items" key={task_id}>
                   <div className="task">
-                    <div className="title-item">{title}</div>
+                    <div className="title-item">
+                      <p>{title}</p>
+                    </div>
                     <div className="div-btn">
                       <button
                         className="buttonEdit"
@@ -162,7 +167,6 @@ const Add = ({ auth }) => {
               );
             })}
           </div>
-
           {todos.length > 0 && (
             <div className="div-deleteAll">
               <button
@@ -186,3 +190,63 @@ const Add = ({ auth }) => {
 };
 
 export default Add;
+
+//         <table className="tables">
+//           {/* table, tbody , tr , td </tbody !! sinon warning navigateur */}
+//             {/* //:si on a pas de tâche on cache notre table sinon on l'affiche */}
+//             {todos.length > 0 && ( // si on a plus de 0 tâche on affiche notre table
+//             <thead className="table-thead">
+//               <tr>
+//                 <th scope="col">Tâche</th>
+//                 <th scope="col">modifier</th>
+//                 <th scope="col">supprimer</th>
+//               </tr>
+//             </thead>
+//             )}
+//             {todos.map((task) => {
+//               const { task_id, title } = task; // destructuring
+//               return (
+//                 <tbody>
+//                 <tr key={task_id} className="items">
+//                   <td className="title-item">{title}</td>
+//                   <td>
+//                     <button
+//                       className="buttonEdit"
+//                       onClick={() => editTasks(task_id)}
+//                     >
+//                       <FaEdit />
+//                     </button>
+//                   </td>
+//                   <td>
+//                     <button
+//                       className="buttonDelete"
+//                       onClick={() => deleteTask(task_id)}
+//                     >
+//                       <FaTrash />
+//                     </button>
+//                   </td>
+//                 </tr>
+//           </tbody>
+//               );
+//             })}
+//         </table>
+//         {todos.length > 0 && (
+//           <button
+//             className="deleteAll"
+//             onClick={() => AlldeleteTaskUsers(auth.user_id)} // supprimer toute les tâches d'un utilisateur par son id
+//           >
+//             supprimer toutes les tâches
+//           </button>
+//         )}
+
+//         {todos.length < 1 && (
+//           <div className="noTask">
+//             <h3>Vous n'avez pas de tâche</h3>
+//           </div>
+//         )}
+//       </article>
+//     </>
+//   );
+// };
+
+// export default Add;
